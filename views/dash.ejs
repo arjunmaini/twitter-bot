@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2>BONJOUR <%=user.userName%></h2>
+    <form action="/postTweet" method="POST">
+        <input type="text" name="tweet_content">
+        <input type="submit" value="Tweeter">
+        <input type="submit" value="Scheduled Tweeter">
+    </form>
+    
+</body>
+</html>
