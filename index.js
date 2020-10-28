@@ -5,6 +5,7 @@ const franc = require('franc');
 const ejs = require('ejs');
 const express = require('express');
 const session = require('express-session');
+const schedule = require('node-schedule');
 const LoginWithTwitter = require('login-with-twitter');
 const app = express()
 const tw = new LoginWithTwitter({
@@ -25,7 +26,7 @@ app.get('/', function(req, res){
     res.render('index');
 });
 
-app.get('/login', function(req, res){
+app.get('/loginTwitter', function(req, res){
     tw.login((err, tokenSecret, url) => {
         if (err) {
         }
@@ -66,13 +67,38 @@ app.post('/postTweet', (req, res) => {
         access_token:         req.session.user.userToken,
         access_token_secret:  req.session.user.userTokenSecret,
     })
-
-    T.post('statuses/update', { status: req.body.tweet_content }, function(err, data, response) {
-        res.redirect('dash')
-      })
-
-      
+          
+        T.post('statuses/update', { status: req.body.tweet_content }, function(err, data, response) {
+         res.redirect('dash')
+        })        
 } )
+
+app.post('/scheduleTweet', (req, res) => {
+    var T = new Twit({
+        consumer_key:         'kbZS75go130eVtCKtjRMPpv2b',
+        consumer_secret:      'ItW7MICvwmDIroGrvvtcInhhw7Z0eDSjGJ0QZQ7OyF0hcHqLto',
+        access_token:         req.session.user.userToken,
+        access_token_secret:  req.session.user.userTokenSecret,
+    })
+
+    var str = req.body.post_date;
+    date = str.split("T")[0];
+    time = str.split("T")[1];
+    ta = time.split(":");
+    da = date.split(":");
+
+    var date = new Date(da[0], da[1], da[2], ta[0], ta[1], 0);
+ 
+    var j = schedule.scheduleJob(date, function(){
+        T.post('statuses/update', { status: req.body.scheduled_tweet_content }, function(err, data, response) {
+           }) 
+    });
+
+    res.redirect('dash')
+
+
+
+})
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log('Server started on port 3000'));

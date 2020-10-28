@@ -1,14 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bootstrap Sign in Form with Facebook and Twitter Buttons</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+	
+    
+    @import url(https://fonts.googleapis.com/css?family=Sniglet|Raleway:900);
+
+
+body, html{
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: 'Sniglet', cursive;
+}
+h6{
+    font-weight:200;
+    font-size: 2em;
+    font-family: 'Raleway', sans-serif;
+    margin-left: 30px;
+    margin-top: 30px;
+    width: 500px;
+    color: #F90;
+    text-align: left;
+
+}
+
+/* Animation webkit */
+@-webkit-keyframes myfirst
+{
+    0% {margin-left: -235px}
+    90% {margin-left: 100%;}
+    100% {margin-left: 100%;}
+}
+
+/* Animation */
+@keyframes myfirst
+{
+    0% {margin-left: -235px}
+    70% {margin-left: 100%;}
+    100% {margin-left: 100%;}
+}
+
+.fish{
+    background-image: url('http://www.geertjanhendriks.nl/codepen/form/fish.png');
+    width: 235px;
+    height: 104px;
+    margin-left: -235px;
+    position: absolute; 
+    animation: myfirst 24s;
+    -webkit-animation: myfirst 24s;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    -webkit-animation-timing-function: linear;
+}
+
+#fish{
+    top: 120px;
+}
+
+#fish2{
+    top: 260px;
+    animation-delay: 12s;
+    -webkit-animation-delay: 12s;
+}
+
+
+.aheader{
+    height: 160px;
+    background: url('http://www.geertjanhendriks.nl/codepen/form/golf.png') repeat-x bottom;
+}
+
+#form{
+    height: 100%;   
+    background-color: #98d4f3;
+    overflow: hidden;
+    position: relative;
+    
+}
+form{
+    margin: 0 auto;
+    width: 500px;
+    padding-top: 40px;
+    color: white;
+    position: relative;
+    
+    
+}
+
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  margin: 10px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+}
+
+.fa:hover {
+  opacity: 0.7;
+}
+
+/* Set a specific color for each brand */
+
+/* Facebook */
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-wordpress{
+    background: #444140;
+    color: white;
+}
+
+/* Twitter */
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-linkedin {
+  background:#0e76a8 ;
+  color: white;
+}
+
+.loginButtons {
+
+  margin-top: 20px;
+  margin-left: 500px;
+}
+
+.fa-instagram {
+    background: #C13584 ;
+    color: white;
+}
+
+img {
+  width: 200px;
+  height: 80px;
+}
+
+</style>
 </head>
 <body>
-
-    <h1>Sign in with twitter!</h1>
-    <a href="/login">SIGN IN</a>
+    <div class="aheader">
+        <h6> Click on the Social Media Accounts you want to connect !</h6>
+    </div>
     
-</body>
+    <div id="form">
+    
+    <div class="fish" id="fish"></div>
+    <div class="fish" id="fish2"></div>
+    
+    <div class="loginButtons">
+        <a href="/" class="fa fa-facebook"></a>
+        <a href="/loginTwitter" class="fa fa-twitter"></a>
+        <a href="https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=8641t8dth9oj06&redirect_uri=https%3A%2F%2Ftwitter-scalenut-post.herokuapp.com%2F&state=fooobarscalenut&scope=r_liteprofile%20r_emailaddress%20w_member_social" class="fa fa-linkedin"></a>
+        <a href="/" class="fa fa-instagram"></a>
+        <a href="/" class="fa fa-wordpress"></a>
+
+    </div>
+
+
+    </div>
+  </body>
 </html>
